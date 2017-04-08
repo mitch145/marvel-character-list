@@ -5,8 +5,16 @@ import React, {Component} from 'react';
 import CharacterCard from './CharacterCard'
 
 export default class CharacterList extends Component {
+    constructor(){
+        super()
+        this.state = {
+            activeCard: ''
+        }
+    }
+    setActiveCard = (active) => {
+        this.setState({activeCard: active})
+    }
     render() {
-
         // Generate character cards from results array
         let characterCards = this.props.results.map((result) => {
             let detail = '';
@@ -29,6 +37,9 @@ export default class CharacterList extends Component {
                 }
             }
             return (<CharacterCard
+                setActive={this.setActiveCard.bind(this)}
+                active={this.state.activeCard === result.id}
+                id={result.id}
                 name={result.name}
                 thumbnail={result.thumbnail}
                 description={result.description ? result.description : 'Description not found.' }

@@ -6,20 +6,17 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton'
 
 export default class CharacterCard extends Component {
-    constructor() {
-        super()
-        this.state = {
-            open: false
-        }
-    }
     render() {
         return (
             <Paper
                 className="character-card hvr hvr-grow"
                 onTouchTap={() => {
-                this.setState({
-                    open: !this.state.open
-                })
+                    console.log(this.props)
+                    if(this.props.active){
+                        this.props.setActive(null)
+                    } else {
+                        this.props.setActive(this.props.id)
+                    }
             }}>
                 <div className="row row-padded">
                     <img
@@ -28,7 +25,7 @@ export default class CharacterCard extends Component {
                         alt={this.props.name}/>
                     <h2 className="name">{this.props.name}</h2>
                 </div>
-                {this.state.open
+                {this.props.active
                     ? (
                         <div>
                             <div className="row row-padded">
