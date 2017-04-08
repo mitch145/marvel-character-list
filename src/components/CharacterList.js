@@ -6,6 +6,8 @@ import CharacterCard from './CharacterCard'
 
 export default class CharacterList extends Component {
     render() {
+
+        // Generate character cards from results array
         let characterCards = this.props.results.map((result) => {
             let detail = '';
             let wiki = '';

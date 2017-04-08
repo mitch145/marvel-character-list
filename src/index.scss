@@ -44,8 +44,9 @@ body {
             .row{
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 .name {
-                    margin: 15px;
+                    margin: 0 15px;
                     font-size: 20px;
                 }
                 .thumbnail {
