@@ -14,6 +14,8 @@ import Footer from './components/Footer';
 import config from './config'
 
 class App extends Component {
+
+  // Set initial state
   constructor() {
     super()
     this.state = {
@@ -26,12 +28,14 @@ class App extends Component {
     }
   }
 
+  // Function to load characters from marvel api
   loadCharacters = (limit, offset) => {
     this.setState({
       loading: true,
       results: []
     })
 
+    // url construction
     let url = 'http://gateway.marvel.com/v1/public/characters?'
 
     let params = {
@@ -46,10 +50,13 @@ class App extends Component {
       .keys(params)
       .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
       .join('&');
+
+    // fetch api call to marvel api
     fetch(url + query).then((response) => {
       response
         .json()
         .then((response) => {
+          // set response to state
           this.setState({
             loading: false,
             offset: response.data.offset,
@@ -63,9 +70,12 @@ class App extends Component {
       console.log('Error:', error)
     })
   }
+
+  // load characters on component mount
   componentDidMount = () => {
     this.loadCharacters(this.state.limit, this.state.offset)
   }
+  
   render() {
     return (
       <div className="page">

@@ -5,9 +5,6 @@ import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 export default class Header extends Component {
-    constructor(props){
-        super(props)
-    }
     render() {
         return (
             <div className="footer">

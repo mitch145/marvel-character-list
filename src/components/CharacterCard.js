@@ -11,7 +11,6 @@ export default class CharacterCard extends Component {
             <Paper
                 className="character-card hvr hvr-grow"
                 onTouchTap={() => {
-                    console.log(this.props)
                     if(this.props.active){
                         this.props.setActive(null)
                     } else {

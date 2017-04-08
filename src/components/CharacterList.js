@@ -5,15 +5,20 @@ import React, {Component} from 'react';
 import CharacterCard from './CharacterCard'
 
 export default class CharacterList extends Component {
+
+    // Set initial state
     constructor(){
         super()
         this.state = {
             activeCard: ''
         }
     }
+
+    // Function to change which card is currently active/selected
     setActiveCard = (active) => {
         this.setState({activeCard: active})
     }
+    
     render() {
         // Generate character cards from results array
         let characterCards = this.props.results.map((result) => {
