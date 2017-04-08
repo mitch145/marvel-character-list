@@ -64,4 +64,11 @@ body {
             }
         }
     }
+    .footer{
+        flex-direction: row;
+        margin-bottom: 25px;
+        .button{
+            margin: 5px;
+        }
+    }
 }

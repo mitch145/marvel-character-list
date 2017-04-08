@@ -8,6 +8,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 // Custom Components
 import Header from './components/Header';
 import CharacterList from './components/CharacterList';
+import Footer from './components/Footer';
 
 // Misc
 import config from './config'
@@ -17,8 +18,8 @@ class App extends Component {
     super()
     this.state = {
       loading: true,
-      offset: '',
-      limit: '',
+      offset: 0,
+      limit: 20,
       total: '',
       count: '',
       results: []
@@ -26,6 +27,10 @@ class App extends Component {
   }
 
   loadCharacters = (limit, offset) => {
+    this.setState({
+      loading: true,
+      results: []
+    })
 
     let url = 'http://gateway.marvel.com/v1/public/characters?'
 
@@ -41,7 +46,6 @@ class App extends Component {
       .keys(params)
       .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
       .join('&');
-
     fetch(url + query).then((response) => {
       response
         .json()
@@ -60,7 +64,7 @@ class App extends Component {
     })
   }
   componentDidMount = () => {
-    this.loadCharacters(20, 0)
+    this.loadCharacters(this.state.limit, this.state.offset)
   }
   render() {
     return (
@@ -69,6 +73,13 @@ class App extends Component {
           ? <CircularProgress className="circular-progress" color='#ffffff'/>
           : ''}
         <CharacterList results={this.state.results}/>
+        <Footer
+          offset={this.state.offset}
+          limit={this.state.limit}
+          total={this.state.total}
+          loadCharacters={this
+          .loadCharacters
+          .bind(this)}/>
       </div>
     );
   }
