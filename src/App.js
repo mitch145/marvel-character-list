@@ -54,7 +54,6 @@ class App extends Component {
             count: response.data.count,
             results: response.data.results
           })
-          console.log(this.state)
         })
     }).catch((error) => {
       console.log('Error:', error)

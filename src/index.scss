@@ -36,19 +36,30 @@ body {
         align-items: center;
         margin: 10px;
         .character-card {
-            margin: 10px;
-            padding: 10px;
-            min-width: 300px;
+            margin: 15px;
+            padding: 5px;
+            min-width: 350px;
+            flex-basis: 0;
+            cursor: pointer;
             .row{
                 display: flex;
                 flex-direction: row;
                 .name {
-                    margin: 10px;
-                    font-size: 30px;
+                    margin: 15px;
+                    font-size: 20px;
                 }
                 .thumbnail {
                     height: 50px;
                 }
+                .button {
+                    margin: 5px;
+                }
+            }
+            .row-padded{
+                padding: 5px;
+            }
+            .row-centered{
+                justify-content: center;
             }
         }
     }

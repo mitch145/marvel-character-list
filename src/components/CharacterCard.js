@@ -3,18 +3,60 @@ import React, {Component} from 'react';
 
 // Material-UI Components
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton'
 
 export default class CharacterCard extends Component {
+    constructor() {
+        super()
+        this.state = {
+            open: false
+        }
+    }
     render() {
         return (
-            <Paper className="character-card">
-                <div className="row">
+            <Paper
+                className="character-card hvr hvr-grow"
+                onTouchTap={() => {
+                this.setState({
+                    open: !this.state.open
+                })
+            }}>
+                <div className="row row-padded">
                     <img
                         className="thumbnail"
                         src={this.props.thumbnail.path + '.' + this.props.thumbnail.extension}
                         alt={this.props.name}/>
                     <h2 className="name">{this.props.name}</h2>
                 </div>
+                {this.state.open
+                    ? (
+                        <div>
+                            <div className="row row-padded">
+                                <p>{this.props.description}</p>
+                            </div>
+                            <div className="row row-centered">
+                                <RaisedButton
+                                    className="button"
+                                    label="Page"
+                                    primary={true}
+                                    href={this.props.page}
+                                    target="_blank"/>
+                                <RaisedButton
+                                    className="button"
+                                    label="Wiki"
+                                    primary={true}
+                                    href={this.props.wiki}
+                                    target="_blank"/>
+                                <RaisedButton
+                                    className="button"
+                                    label="Comics"
+                                    primary={true}
+                                    href={this.props.comics}
+                                    target="_blank"/>
+                            </div>
+                        </div>
+                    )
+                    : ''}
             </Paper>
         )
     }
