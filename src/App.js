@@ -30,8 +30,7 @@ class App extends Component {
   }
 
   // Function to load characters from marvel api
-  loadCharacters = (limit, offset, order) => {
-    console.log(this.state)
+  loadCharacters = (offset, order) => {
     this.setState({
       loading: true,
       results: []
@@ -44,7 +43,7 @@ class App extends Component {
       apikey: config.apikey,
       ts: config.ts,
       hash: config.hash,
-      limit: limit,
+      limit: this.state.limit,
       offset: offset,
       orderBy: order
     }
@@ -62,12 +61,12 @@ class App extends Component {
           // set new state
           this.setState({
             loading: false,
-            offset: response.data.offset,
+            offset: offset,
             limit: response.data.limit,
             total: response.data.total,
             count: response.data.count,
             results: response.data.results,
-            order: response.data.orderBy
+            order: order
           })
         })
     }).catch((error) => {
@@ -76,16 +75,16 @@ class App extends Component {
   }
 
   changeOrder = (order) => {
-    this.loadCharacters(this.state.limit, 0, order)
+    this.loadCharacters(0, order)
   }
 
   changeOffset = (offset) => {
-    this.loadCharacters(this.state.limit, offset, this.state.order)
+    this.loadCharacters(offset, this.state.order)
   }
 
   // load characters on component mount
   componentDidMount = () => {
-    this.loadCharacters(this.state.limit, this.state.offset, this.state.order)
+    this.loadCharacters(this.state.offset, this.state.order)
   }
   
   render() {
