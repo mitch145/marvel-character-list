@@ -29,7 +29,7 @@ export default class CharacterCard extends Component {
                             <div className="row row-padded" onTouchTap={this.toggleActive}>
                                 <p>{this.props.description}</p>
                             </div>
-                            <div className="row row-spaced">
+                            <div className="row-responsive row-spaced">
                                 <RaisedButton
                                     className="button"
                                     label="Page"

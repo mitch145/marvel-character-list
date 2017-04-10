@@ -38,7 +38,12 @@ body {
         .character-card {
             margin: 15px;
             padding: 5px;
-            min-width: 350px;
+            @media screen and (min-width: 380px) {
+                min-width: 350px;
+            }
+            @media screen and (max-width: 379px) {
+                min-width: 250px;
+            }
             flex-basis: 0;
             cursor: pointer;
         }
@@ -63,6 +68,21 @@ body {
         }
         .button {
             margin: 5px;
+        }
+    }
+    .row-responsive {
+        display: flex;
+        align-items: center;
+        @media screen and (min-width: 380px) {
+            flex-direction: row;
+        }
+        @media screen and (max-width: 379px) {
+            flex-direction: column;
+            p
+            .button{
+                margin-top: 5px;
+                width: 100%;
+            }
         }
     }
     .row-padded {
