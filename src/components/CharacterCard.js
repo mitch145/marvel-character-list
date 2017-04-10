@@ -8,13 +8,9 @@ import RaisedButton from 'material-ui/RaisedButton'
 export default class CharacterCard extends Component {
     toggleActive = () => {
         if (this.props.active) {
-            this
-                .props
-                .setActive(null)
+            this.props.setActive(null)
         } else {
-            this
-                .props
-                .setActive(this.props.id)
+            this.props.setActive(this.props.id)
         }
     }
     render() {
@@ -33,7 +29,7 @@ export default class CharacterCard extends Component {
                             <div className="row row-padded" onTouchTap={this.toggleActive}>
                                 <p>{this.props.description}</p>
                             </div>
-                            <div className="row row-centered">
+                            <div className="row row-spaced">
                                 <RaisedButton
                                     className="button"
                                     label="Page"

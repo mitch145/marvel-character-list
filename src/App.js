@@ -24,12 +24,14 @@ class App extends Component {
       limit: 20,
       total: '',
       count: '',
+      order: 'name',
       results: []
     }
   }
 
   // Function to load characters from marvel api
-  loadCharacters = (limit, offset) => {
+  loadCharacters = (limit, offset, order) => {
+    console.log(this.state)
     this.setState({
       loading: true,
       results: []
@@ -43,7 +45,8 @@ class App extends Component {
       ts: config.ts,
       hash: config.hash,
       limit: limit,
-      offset: offset
+      offset: offset,
+      orderBy: order
     }
 
     let query = Object
@@ -56,14 +59,15 @@ class App extends Component {
       response
         .json()
         .then((response) => {
-          // set response to state
+          // set new state
           this.setState({
             loading: false,
             offset: response.data.offset,
             limit: response.data.limit,
             total: response.data.total,
             count: response.data.count,
-            results: response.data.results
+            results: response.data.results,
+            order: response.data.orderBy
           })
         })
     }).catch((error) => {
@@ -71,25 +75,30 @@ class App extends Component {
     })
   }
 
+  changeOrder = (order) => {
+    this.loadCharacters(this.state.limit, 0, order)
+  }
+
+  changeOffset = (offset) => {
+    this.loadCharacters(this.state.limit, offset, this.state.order)
+  }
+
   // load characters on component mount
   componentDidMount = () => {
-    this.loadCharacters(this.state.limit, this.state.offset)
+    this.loadCharacters(this.state.limit, this.state.offset, this.state.order)
   }
   
   render() {
     return (
       <div className="page">
-        <Header/> {this.state.loading
+        <Header order={this.state.order} changeOrder={this.changeOrder}/> {this.state.loading
           ? <CircularProgress className="circular-progress" color='#ffffff'/>
           : ''}
         <CharacterList results={this.state.results}/>
         <Footer
-          offset={this.state.offset}
-          limit={this.state.limit}
           total={this.state.total}
-          loadCharacters={this
-          .loadCharacters
-          .bind(this)}/>
+          offset={this.state.offset}
+          changeOffset={this.changeOffset}/>
       </div>
     );
   }

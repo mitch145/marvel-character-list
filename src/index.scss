@@ -41,34 +41,37 @@ body {
             min-width: 350px;
             flex-basis: 0;
             cursor: pointer;
-            .row{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                .name {
-                    margin: 0 15px;
-                    font-size: 20px;
-                }
-                .thumbnail {
-                    height: 50px;
-                }
-                .button {
-                    margin: 5px;
-                }
-            }
-            .row-padded{
-                padding: 5px;
-            }
-            .row-centered{
-                justify-content: space-between;
-            }
         }
     }
-    .footer{
+    .footer {
         flex-direction: row;
         margin-bottom: 25px;
-        .button{
+        .button {
             margin: 5px;
         }
+    }
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .name {
+            margin: 0 15px;
+            font-size: 20px;
+        }
+        .thumbnail {
+            height: 50px;
+        }
+        .button {
+            margin: 5px;
+        }
+    }
+    .row-padded {
+        padding: 5px;
+    }
+    .row-spaced {
+        justify-content: space-between;
+    }
+    .row-centered {
+        justify-content: center;
     }
 }
