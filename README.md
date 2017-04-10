@@ -9,5 +9,5 @@ Simple web application that displays details about characters from the [Marvel A
 4. `npm start`
 
 ## Technologies Used
-* ReactJS
-* Material UI
+* [ReactJS](https://facebook.github.io/react/)
+* [Material UI](http://www.material-ui.com/#/)
