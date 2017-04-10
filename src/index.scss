@@ -17,12 +17,12 @@ body {
             text-align: center;
             font-weight: 300;
         }
-        .search {
-            background-color: #fff;
-            padding: 0 10px;
-            border-radius: 2px;
-            .search-field {
-                width: 100% !important;
+        .button {
+            span {
+                font-size: 14px;
+                font-weight: 500;
+                padding-left: 16px;
+                padding-right: 16px;
             }
         }
     }

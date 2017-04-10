@@ -32,15 +32,23 @@ export default class Header extends Component {
             <div className="header">
                 <h1 className="title">Marvel Character List</h1>
                 <div className="row row-centered">
-                    <p>Order:</p>
+                    <p>Order:&nbsp;</p>
                     <RaisedButton
                         onTouchTap={() => {this.orderBy('name')}}
-                        className="button"
-                        label="Name"/>
+                        className="button">
+                        <span>
+                            NAME&nbsp;
+                            <i className={this.props.order === '-name' ? 'fa fa-angle-up' : 'fa fa-angle-down'}></i>
+                        </span>
+                    </RaisedButton>
                     <RaisedButton
                         onTouchTap={() => {this.orderBy('modified')}}
-                        className="button"
-                        label="Modified"/>
+                        className="button">
+                        <span>
+                            MODIFIED&nbsp;
+                            <i className={this.props.order === '-modified' ? 'fa fa-angle-up' : 'fa fa-angle-down'}></i>
+                        </span>
+                    </RaisedButton>
                 </div>
             </div>
         )
