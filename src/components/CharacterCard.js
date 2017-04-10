@@ -6,28 +6,31 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton'
 
 export default class CharacterCard extends Component {
+    toggleActive = () => {
+        if (this.props.active) {
+            this
+                .props
+                .setActive(null)
+        } else {
+            this
+                .props
+                .setActive(this.props.id)
+        }
+    }
     render() {
         return (
-            <Paper
-                className="character-card hvr hvr-grow"
-                onTouchTap={() => {
-                    if(this.props.active){
-                        this.props.setActive(null)
-                    } else {
-                        this.props.setActive(this.props.id)
-                    }
-            }}>
-                <div className="row row-padded">
-                    <img
-                        className="thumbnail"
-                        src={this.props.thumbnail.path + '.' + this.props.thumbnail.extension}
-                        alt={this.props.name}/>
-                    <h2 className="name">{this.props.name}</h2>
-                </div>
+            <Paper className="character-card hvr hvr-grow">
+                    <div className="row row-padded" onTouchTap={this.toggleActive}>
+                        <img
+                            className="thumbnail"
+                            src={this.props.thumbnail.path + '.' + this.props.thumbnail.extension}
+                            alt={this.props.name}/>
+                        <h2 className="name">{this.props.name}</h2>
+                    </div>
                 {this.props.active
                     ? (
                         <div>
-                            <div className="row row-padded">
+                            <div className="row row-padded" onTouchTap={this.toggleActive}>
                                 <p>{this.props.description}</p>
                             </div>
                             <div className="row row-centered">
