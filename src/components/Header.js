@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 export default class Header extends Component {
     // Change order according to requested button press
     orderBy = (newOrder) => {
-        console.log(this.props.order === 'name')
+        console.log(this.props.order)
         // If name pressed
         if (newOrder === 'name') {
             // First case, set order to -name
